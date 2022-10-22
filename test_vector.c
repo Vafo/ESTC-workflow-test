@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     
     printf("Testing Vector operations over %d Dimension\n\n", VECTOR_SIZE);
     // Testing addition
-    printf("Testing Addition\n");
+    printf("\nTesting Addition\n");
     result = vector_add(first, second);
     print_vector(first);
     printf("+\n");
@@ -23,12 +23,20 @@ int main(int argc, char *argv[])
     print_vector(result);
 
     // Testing substraction
-    printf("Testing Substraction\n");
+    printf("\nTesting Substraction\n");
     result = vector_sub(first, second);
     print_vector(first);
     printf("-\n");
     print_vector(second);
     print_vector(result);
+
+    // Testing dot product
+    printf("\nTesting Dot product\n");
+    vector_el result_el = vector_dot(first, second);
+    print_vector(first);
+    printf(".\n");
+    print_vector(second);
+    printf("= %d\n", result_el);
 }
 
 void print_vector(vector_t src)
