@@ -62,3 +62,33 @@ vector_el vector_dot(vector_t a, vector_t b)
 
     return result;
 }
+
+#if VECTOR_SIZE == 3
+
+vector_t vector_cross(vector_t a, vector_t b)
+{
+    vector_t result;
+    result.elements[0] = a.elements[1] * b.elements[2] - a.elements[2] * b.elements[1];
+    result.elements[1] = a.elements[2] * b.elements[0] - a.elements[0] * b.elements[2];
+    result.elements[2] = a.elements[0] * b.elements[1] - a.elements[1] * b.elements[0];
+
+    return result;
+}
+
+#else 
+#error [!] CROSS PRODUCT NOT DEFINED
+vector_t vector_cross(vector_t a, vector_t b)
+{
+    vector_t result;
+    
+    int i;
+    for(i = 0; i < VECTOR_SIZE; i++)
+    {
+        result.elements[i] = 0;
+    } 
+
+    return result;
+}
+
+#endif
+
