@@ -15,6 +15,6 @@ vector_t vector_copy(vector_t source);          // Initialization using existing
 
 vector_t vector_add(vector_t a, vector_t b);    // Addition over 2 vectors
 vector_t vector_sub(vector_t a, vector_t b);    // Substraction a - b
-vector_el vector_dot(vector_t a, vector_t b);    // Substraction a - b
+vector_el vector_dot(vector_t a, vector_t b);   // Dot Product a . b
 
 #endif
