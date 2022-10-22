@@ -13,7 +13,17 @@ vector_t vector_init(int els[VECTOR_SIZE])
     return result;
 }
 
-vector_t vector_copy(vector_t source);
+vector_t vector_copy(vector_t source)
+{
+    int i;
+    vector_t result;
+    for(i = 0; i < VECTOR_SIZE; i++)
+    {
+        result.elements[i] = source.elements[i];
+    }
+
+    return result; 
+}
 
 vector_t vector_add(vector_t a, vector_t b)
 {
