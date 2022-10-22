@@ -1,20 +1,24 @@
 SRCS = test_vector.c $(wildcard vector/*.c)
 OBJS := $(SRCS:.c=.o)
+DEPS := $(SRCS:.c=.d)
 BUILDDIR ?= build
+DEPDIR ?= dep
 OBJS := $(addprefix $(BUILDDIR)/, $(OBJS))
+DEPS := $(addprefix $(DEPDIR)/, $(DEPS))
 
 program: $(OBJS)
 	gcc -o $@ $^
 
 $(BUILDDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	gcc -c $^ -o $@
+	gcc -c $< -o $@
 
-.depend: $(SRCS)
-	gcc -MM $^ -o $@
+$(DEPDIR)/%.d: %.c
+	@mkdir -p $(dir $@)
+	gcc -MM $^ -MT '$(BUILDDIR)/'$(^:.c=.o) -o $@
 
 clean:
-	rm -rf $(BUILDDIR) program
+	rm -rf $(BUILDDIR) $(DEPDIR) program
 
-include .depend
+include $(DEPS)
 .PHONY: clean
