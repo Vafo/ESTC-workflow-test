@@ -13,11 +13,20 @@ int main(int argc, char *argv[])
     first = vector_init(els1);
     second = vector_init(els2);
     
+    printf("Testing Vector operations over %d Dimension\n\n", VECTOR_SIZE);
     // Testing addition
-    printf("Testing addition over %d Dimension\n", VECTOR_SIZE);
+    printf("Testing Addition\n");
     result = vector_add(first, second);
     print_vector(first);
     printf("+\n");
+    print_vector(second);
+    print_vector(result);
+
+    // Testing substraction
+    printf("Testing Substraction\n");
+    result = vector_sub(first, second);
+    print_vector(first);
+    printf("-\n");
     print_vector(second);
     print_vector(result);
 }
